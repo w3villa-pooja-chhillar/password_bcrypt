@@ -18,4 +18,14 @@ def create_secure_user(list_of_user)
     end
     list_of_user
 end
-puts create_secure_user(users)
+new_user = create_secure_user(users)
+puts new_user
+def authenticate_user(username,password,list_of_user)
+    list_of_user.each do |user_record|
+        if user_record[:username] == username && verify_hash(user_record[:password]) == password
+            return user_record
+        end
+    end
+    "credentials were not correct"
+end
+    p authenticate_user("pooja","password1",users)
